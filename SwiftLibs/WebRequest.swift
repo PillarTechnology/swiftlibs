@@ -10,16 +10,16 @@ public class WebRequest : NSObject {
         var _headers : Dictionary<String, String> = Dictionary<String, String>()
         var _data : String!
 
-        init(wasSuccess : Bool) {
+        internal init(wasSuccess : Bool) {
             _wasSuccess = wasSuccess
         }
 
-        func getWasSuccess() -> Bool { return _wasSuccess; }
-        func getResponseCode() -> Int? { return _responseCode }
-        func getErrorMessage() -> String? { return _errorMessage }
-        func getHeaders() -> Dictionary<String, String> { return _headers }
-        func getHeader(key : String) -> String? { return _headers[key] }
-        func getData() -> String? { return _data }
+        public func getWasSuccess() -> Bool { return _wasSuccess; }
+        public func getResponseCode() -> Int? { return _responseCode }
+        public func getErrorMessage() -> String? { return _errorMessage }
+        public func getHeaders() -> Dictionary<String, String> { return _headers }
+        public func getHeader(key : String) -> String? { return _headers[key] }
+        public func getData() -> String? { return _data }
 
         func setResponseCode(responseCode : Int?) { _responseCode = responseCode }
         func setErrorMessage(errorMessage : String?) { _errorMessage = errorMessage }
@@ -32,7 +32,7 @@ public class WebRequest : NSObject {
     }
 
     public class MultiPart {
-        enum ContentDisposition : String {
+        public enum ContentDisposition : String {
             case INLINE = "inline"
             case ATTACHMENT = "attachment"
             case FORM_DATA = "form-data"
@@ -64,37 +64,45 @@ public class WebRequest : NSObject {
         var _voice : String?
         var _handling : String?
 
-        init(contentDisposition : ContentDisposition, name : String) {
+        internal init(contentDisposition : ContentDisposition, name : String) {
             _contentDisposition = contentDisposition
             _name = name
         }
 
-        func setFilename(filename : String?) { _filename = filename }
-        func setContentType(contentType : String?) { _contentType = contentType }
-        func setData(data : String) {
+        // NOTE:
+        //  Designed to be overridden for injection.
+        //      You probably do not want to use the default constructor.
+        public static var newInstance : (contentDisposition : ContentDisposition, name : String) -> MultiPart = {
+            (contentDisposition : ContentDisposition, name : String) -> MultiPart in
+                return MultiPart(contentDisposition : contentDisposition, name : name)
+        }
+
+        public func setFilename(filename : String?) { _filename = filename }
+        public func setContentType(contentType : String?) { _contentType = contentType }
+        public func setData(data : String) {
             _data = data.dataUsingEncoding(NSUTF8StringEncoding)
         }
-        func setData(data : NSData) { _data = data }
-        func setCreationDate(creationDate : String?) { _creationDate = creationDate }
-        func setModificationDate(modificationDate : String?) { _modificationDate = modificationDate }
-        func setReadDate(creationDate : String?) { _readDate = creationDate }
-        func setSize(size : Int?) { _size = size }
-        func setVoice(voice : String?) { _voice = voice }
-        func setHandling(handling : String?) { _handling = handling }
+        public func setData(data : NSData) { _data = data }
+        public func setCreationDate(creationDate : String?) { _creationDate = creationDate }
+        public func setModificationDate(modificationDate : String?) { _modificationDate = modificationDate }
+        public func setReadDate(creationDate : String?) { _readDate = creationDate }
+        public func setSize(size : Int?) { _size = size }
+        public func setVoice(voice : String?) { _voice = voice }
+        public func setHandling(handling : String?) { _handling = handling }
 
-        func getContentDisposition() -> ContentDisposition { return _contentDisposition }
-        func getName() -> String { return _name }
-        func getFilename() -> String? { return _filename }
-        func getContentType() -> String? { return _contentType }
-        func getData() -> NSData { return _data }
-        func getCreationDate() -> String? { return _creationDate }
-        func getModificationDate() -> String? { return _modificationDate }
-        func getReadDate() -> String? { return _readDate }
-        func getSize() -> Int? { return _size }
-        func getVoice() -> String? { return _voice }
-        func getHandling() -> String? { return _handling }
+        public func getContentDisposition() -> ContentDisposition { return _contentDisposition }
+        public func getName() -> String { return _name }
+        public func getFilename() -> String? { return _filename }
+        public func getContentType() -> String? { return _contentType }
+        public func getData() -> NSData { return _data }
+        public func getCreationDate() -> String? { return _creationDate }
+        public func getModificationDate() -> String? { return _modificationDate }
+        public func getReadDate() -> String? { return _readDate }
+        public func getSize() -> Int? { return _size }
+        public func getVoice() -> String? { return _voice }
+        public func getHandling() -> String? { return _handling }
 
-        func isValid() -> Bool {
+        public func isValid() -> Bool {
             if (_filename != nil && _contentType == nil) {
                 return false
             }
