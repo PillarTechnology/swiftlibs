@@ -23,4 +23,5 @@ xcuserdata
 .build/
 
 Swiftlibs.framework
+SwiftlibsProduction.framework
 

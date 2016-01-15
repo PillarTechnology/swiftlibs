@@ -16,6 +16,8 @@
 		D56150481C3AD89D009EE343 /* Mocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56150471C3AD89D009EE343 /* Mocker.swift */; };
 		D561504A1C3AD8A1009EE343 /* MockWebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56150491C3AD8A1009EE343 /* MockWebRequest.swift */; };
 		D58F12311C49409F006F4CA1 /* SwiftLibsFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = D58F12301C49409F006F4CA1 /* SwiftLibsFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D58F12511C494A3F006F4CA1 /* SwiftLibsFramework-Production.h in Headers */ = {isa = PBXBuildFile; fileRef = D58F12501C494A3F006F4CA1 /* SwiftLibsFramework-Production.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D58F126E1C494AE8006F4CA1 /* SwiftLibsFrameworkProduction.h in Headers */ = {isa = PBXBuildFile; fileRef = D58F126D1C494AE8006F4CA1 /* SwiftLibsFrameworkProduction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,15 @@
 		D58F12321C49409F006F4CA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D58F123C1C49409F006F4CA1 /* SwiftLibsFrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLibsFrameworkTests.swift; sourceTree = "<group>"; };
 		D58F123E1C49409F006F4CA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D58F12501C494A3F006F4CA1 /* SwiftLibsFramework-Production.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftLibsFramework-Production.h"; sourceTree = "<group>"; };
+		D58F12521C494A3F006F4CA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D58F125C1C494A3F006F4CA1 /* SwiftLibsFramework_ProductionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLibsFramework_ProductionTests.swift; sourceTree = "<group>"; };
+		D58F125E1C494A3F006F4CA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D58F126B1C494AE8006F4CA1 /* SwiftLibsFrameworkProduction.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLibsFrameworkProduction.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D58F126D1C494AE8006F4CA1 /* SwiftLibsFrameworkProduction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftLibsFrameworkProduction.h; sourceTree = "<group>"; };
+		D58F126F1C494AE8006F4CA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D58F12791C494AE8006F4CA1 /* SwiftLibsFrameworkProductionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLibsFrameworkProductionTests.swift; sourceTree = "<group>"; };
+		D58F127B1C494AE8006F4CA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +81,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D58F12671C494AE8006F4CA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -80,6 +98,10 @@
 				D561502F1C3ACE5A009EE343 /* SwiftLibsTests */,
 				D58F122F1C49409F006F4CA1 /* SwiftLibsFramework */,
 				D58F123B1C49409F006F4CA1 /* SwiftLibsFrameworkTests */,
+				D58F124F1C494A3F006F4CA1 /* SwiftLibsFramework-Production */,
+				D58F125B1C494A3F006F4CA1 /* SwiftLibsFramework-ProductionTests */,
+				D58F126C1C494AE8006F4CA1 /* SwiftLibsFrameworkProduction */,
+				D58F12781C494AE8006F4CA1 /* SwiftLibsFrameworkProductionTests */,
 				D56150221C3ACE5A009EE343 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +112,7 @@
 				D56150211C3ACE5A009EE343 /* SwiftLibs.framework */,
 				D561502B1C3ACE5A009EE343 /* SwiftLibsTests.xctest */,
 				D58F122E1C49409F006F4CA1 /* SwiftLibsFramework.framework */,
+				D58F126B1C494AE8006F4CA1 /* SwiftLibsFrameworkProduction.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,6 +166,42 @@
 			path = SwiftLibsFrameworkTests;
 			sourceTree = "<group>";
 		};
+		D58F124F1C494A3F006F4CA1 /* SwiftLibsFramework-Production */ = {
+			isa = PBXGroup;
+			children = (
+				D58F12501C494A3F006F4CA1 /* SwiftLibsFramework-Production.h */,
+				D58F12521C494A3F006F4CA1 /* Info.plist */,
+			);
+			path = "SwiftLibsFramework-Production";
+			sourceTree = "<group>";
+		};
+		D58F125B1C494A3F006F4CA1 /* SwiftLibsFramework-ProductionTests */ = {
+			isa = PBXGroup;
+			children = (
+				D58F125C1C494A3F006F4CA1 /* SwiftLibsFramework_ProductionTests.swift */,
+				D58F125E1C494A3F006F4CA1 /* Info.plist */,
+			);
+			path = "SwiftLibsFramework-ProductionTests";
+			sourceTree = "<group>";
+		};
+		D58F126C1C494AE8006F4CA1 /* SwiftLibsFrameworkProduction */ = {
+			isa = PBXGroup;
+			children = (
+				D58F126D1C494AE8006F4CA1 /* SwiftLibsFrameworkProduction.h */,
+				D58F126F1C494AE8006F4CA1 /* Info.plist */,
+			);
+			path = SwiftLibsFrameworkProduction;
+			sourceTree = "<group>";
+		};
+		D58F12781C494AE8006F4CA1 /* SwiftLibsFrameworkProductionTests */ = {
+			isa = PBXGroup;
+			children = (
+				D58F12791C494AE8006F4CA1 /* SwiftLibsFrameworkProductionTests.swift */,
+				D58F127B1C494AE8006F4CA1 /* Info.plist */,
+			);
+			path = SwiftLibsFrameworkProductionTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -158,7 +217,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D58F12511C494A3F006F4CA1 /* SwiftLibsFramework-Production.h in Headers */,
+				D58F126E1C494AE8006F4CA1 /* SwiftLibsFrameworkProduction.h in Headers */,
 				D58F12311C49409F006F4CA1 /* SwiftLibsFramework.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D58F12681C494AE8006F4CA1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +288,25 @@
 			productReference = D58F122E1C49409F006F4CA1 /* SwiftLibsFramework.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		D58F126A1C494AE8006F4CA1 /* SwiftLibsFrameworkProduction */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D58F127C1C494AE8006F4CA1 /* Build configuration list for PBXNativeTarget "SwiftLibsFrameworkProduction" */;
+			buildPhases = (
+				D58F12661C494AE8006F4CA1 /* Sources */,
+				D58F12671C494AE8006F4CA1 /* Frameworks */,
+				D58F12681C494AE8006F4CA1 /* Headers */,
+				D58F12691C494AE8006F4CA1 /* Resources */,
+				D58F12821C494AF0006F4CA1 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftLibsFrameworkProduction;
+			productName = SwiftLibsFrameworkProduction;
+			productReference = D58F126B1C494AE8006F4CA1 /* SwiftLibsFrameworkProduction.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -239,6 +326,9 @@
 					D58F122D1C49409F006F4CA1 = {
 						CreatedOnToolsVersion = 7.2;
 					};
+					D58F126A1C494AE8006F4CA1 = {
+						CreatedOnToolsVersion = 7.2;
+					};
 				};
 			};
 			buildConfigurationList = D561501B1C3ACE5A009EE343 /* Build configuration list for PBXProject "SwiftLibs" */;
@@ -256,6 +346,7 @@
 				D56150201C3ACE5A009EE343 /* SwiftLibs */,
 				D561502A1C3ACE5A009EE343 /* SwiftLibsTests */,
 				D58F122D1C49409F006F4CA1 /* SwiftLibsFramework */,
+				D58F126A1C494AE8006F4CA1 /* SwiftLibsFrameworkProduction */,
 			);
 		};
 /* End PBXProject section */
@@ -282,6 +373,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D58F12691C494AE8006F4CA1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -297,6 +395,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "UNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build || exit 1\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphonesimulator BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build || exit 1\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\" || exit 1\n\n# Step 3. Copy Swift modules (from iphonesimulator build) to the copied framework directory\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\" || exit 1\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\" || exit 1\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\" || exit 1\n";
+		};
+		D58F12821C494AF0006F4CA1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "UNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build || exit 1\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\" || exit 1\n\n# Step 3. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}/${PROJECT_NAME}Production.framework\" || exit 1\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -322,6 +433,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D58F12291C49409F006F4CA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D58F12661C494AE8006F4CA1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -515,6 +633,40 @@
 			};
 			name = Release;
 		};
+		D58F127D1C494AE8006F4CA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SwiftLibsFrameworkProduction/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = PillarTechnology.SwiftLibsFrameworkProduction;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D58F127E1C494AE8006F4CA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SwiftLibsFrameworkProduction/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = PillarTechnology.SwiftLibsFrameworkProduction;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -550,6 +702,14 @@
 			buildConfigurations = (
 				D58F123F1C49409F006F4CA1 /* Debug */,
 				D58F12401C49409F006F4CA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D58F127C1C494AE8006F4CA1 /* Build configuration list for PBXNativeTarget "SwiftLibsFrameworkProduction" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D58F127D1C494AE8006F4CA1 /* Debug */,
+				D58F127E1C494AE8006F4CA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
