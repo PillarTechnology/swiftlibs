@@ -1,0 +1,29 @@
+This framework provides:
+    - iOS Mocker
+    - WebRequest
+        - HTTP MultiPart
+        - HTTP Methods (ex. GET/POST/PUT/etc)
+        - HTTP-Redirection
+    - Mock WebRequest
+    - Util Functions
+        - DataFromHexString
+        - SplitString
+
+IMPORTANT:
+    This project contains two frameworks, one for development and another for production.
+        The production version is portable to the Apple App Store, but is incompatible with iOS-Simulators.
+        The development version is compatible with both iOS-Devices and the iOS-Simulators, but is NOT compatible with the Apple App Store.
+
+
+Build:
+    Development (Non App Store):
+        1. Select the "SwiftLibsFramework" project from the target-menu.
+        2. Select any non-generic simulator from the build-target. (i.e. "iPhone 5s")
+        3. Copy the built framework from bin/development into your project's directory.
+        4. Add the framework as an embedded-binary into your application.
+    Production (App Store):
+        1. Select the "SwiftLibsFrameworkProduction" project from the target-menu.
+        2. Select any the generic simulator from the build-target. (i.e. "Generic iOS Device")
+        3. Copy the built framework from bin/development into your project's directory.
+        4. Add the framework as an embedded-binary into your application.
+
