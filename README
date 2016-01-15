@@ -27,3 +27,8 @@ Build:
         3. Copy the built framework from bin/development into your project's directory.
         4. Add the framework as an embedded-binary into your application.
 
+
+Pre-Built Binaries:
+    Located:
+        ./release/<version>/
+
