@@ -1,0 +1,7 @@
+USAGE:
+    1. Copy the SwiftLibs.framework into the destination project directory.
+    2. Add the SwiftLibs.framework to the "Embedded Binaries" section within the destination Project settings.
+
+NOTE:
+    This framework is built for the Apple App Store and ios-devices only; it will NOT work within simulators.
+

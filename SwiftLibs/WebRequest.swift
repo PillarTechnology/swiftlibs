@@ -10,7 +10,7 @@ public class WebRequest : NSObject {
         var _headers : Dictionary<String, String> = Dictionary<String, String>()
         var _data : String!
 
-        internal init(wasSuccess : Bool) {
+        public init(wasSuccess : Bool) {
             _wasSuccess = wasSuccess
         }
 
@@ -21,12 +21,12 @@ public class WebRequest : NSObject {
         public func getHeader(key : String) -> String? { return _headers[key] }
         public func getData() -> String? { return _data }
 
-        func setResponseCode(responseCode : Int?) { _responseCode = responseCode }
-        func setErrorMessage(errorMessage : String?) { _errorMessage = errorMessage }
-        func setHeader(header header : String, value : String) {
+        public func setResponseCode(responseCode : Int?) { _responseCode = responseCode }
+        public func setErrorMessage(errorMessage : String?) { _errorMessage = errorMessage }
+        public func setHeader(header header : String, value : String) {
             _headers[header] = value
         }
-        func setData(data : String?) {
+        public func setData(data : String?) {
             _data = data
         }
     }
