@@ -1,7 +1,7 @@
 import Foundation
 
 public class MockWebRequest : WebRequest {
-    var mocker : Mocker = Mocker()
+    public var mocker : Mocker = Mocker()
 
     private static var _originalRandomFunction : (() -> Int)?
     public static func mockRandomFunction(var randomFunction : (() -> Int)?) {
@@ -71,8 +71,8 @@ public class MockWebRequest : WebRequest {
     }
 
     public class _executeResponse {
-        var request : WebRequest!
-        var response : Response!
+        public var request : WebRequest!
+        public var response : Response!
     }
     public var executeMockedResponse : _executeResponse = _executeResponse()
 
