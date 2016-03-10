@@ -10,7 +10,7 @@ public class WebRequest : NSObject {
         var _headers : Dictionary<String, String> = Dictionary<String, String>()
         var _data : String!
 
-        internal init(wasSuccess : Bool) {
+        public init(wasSuccess : Bool) {
             _wasSuccess = wasSuccess
         }
 
