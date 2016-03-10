@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/SwiftLibs-Swift.h</key>
 		<data>
-		CSCq4MWTcgWT/gGKmJJ7dmcpx7U=
+		Q6Hi2xAkMT9UG9UvpLg+EUpr/JQ=
 		</data>
 		<key>Headers/SwiftLibs.h</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		svbMEBMlS/8iTYWYSOIcG88Tjxw=
+		UP52L7zlGf+k7ad/dfSI4giTHOM=
 		</data>
 		<key>Modules/SwiftLibs.swiftmodule/arm.swiftdoc</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/SwiftLibs.swiftmodule/arm.swiftmodule</key>
 		<data>
-		21AIveXU3EhFGI9oQGqS442CIAM=
+		c0wj++zZr8R2LmoBgnnaJRpqRN0=
 		</data>
 		<key>Modules/SwiftLibs.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Modules/SwiftLibs.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		mvVqfR7hJrXTxvk2E8d5xGjVmR4=
+		hs/D3U4CKE1FGxuEItLbUFAw3j8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -41,7 +41,7 @@
 	<dict>
 		<key>Headers/SwiftLibs-Swift.h</key>
 		<data>
-		CSCq4MWTcgWT/gGKmJJ7dmcpx7U=
+		Q6Hi2xAkMT9UG9UvpLg+EUpr/JQ=
 		</data>
 		<key>Headers/SwiftLibs.h</key>
 		<data>
@@ -53,7 +53,7 @@
 		</data>
 		<key>Modules/SwiftLibs.swiftmodule/arm.swiftmodule</key>
 		<data>
-		21AIveXU3EhFGI9oQGqS442CIAM=
+		c0wj++zZr8R2LmoBgnnaJRpqRN0=
 		</data>
 		<key>Modules/SwiftLibs.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -61,7 +61,7 @@
 		</data>
 		<key>Modules/SwiftLibs.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		mvVqfR7hJrXTxvk2E8d5xGjVmR4=
+		hs/D3U4CKE1FGxuEItLbUFAw3j8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
