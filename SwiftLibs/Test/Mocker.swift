@@ -2,7 +2,7 @@
 import Foundation
 import UIKit
 
-protocol iMocker {
+public protocol iMocker {
     typealias MethodName_t = String
     typealias ParamList_t = Array<Any>
     typealias ReturnType_t = Any

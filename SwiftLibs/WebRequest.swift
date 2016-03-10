@@ -156,7 +156,7 @@ public class WebRequest : NSObject {
             super.init()
         }
 
-        func setFollowRedirects(followRedirects : Bool) {
+        internal func setFollowRedirects(followRedirects : Bool) {
             _followRedirects = followRedirects
         }
 
@@ -166,7 +166,7 @@ public class WebRequest : NSObject {
         //  func URLSession(session: NSURLSession, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void)
         //  func URLSessionDidFinishEventsForBackgroundURLSession(session: NSURLSession)
 
-        @objc func URLSession(session: NSURLSession, task: NSURLSessionTask, willPerformHTTPRedirection response: NSHTTPURLResponse, newRequest request: NSURLRequest, completionHandler: (NSURLRequest?) -> Void) {
+        @objc internal func URLSession(session: NSURLSession, task: NSURLSessionTask, willPerformHTTPRedirection response: NSHTTPURLResponse, newRequest request: NSURLRequest, completionHandler: (NSURLRequest?) -> Void) {
             if (_followRedirects) {
                 completionHandler(request)
             }
