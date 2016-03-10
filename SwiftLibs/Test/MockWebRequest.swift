@@ -25,6 +25,10 @@ public class MockWebRequest : WebRequest {
         }
     }
 
+    public override init() {
+        super.init();
+    }
+
     public override func setUrl(url: String) {
         self.mocker.recordInvocation("setUrl", paramList: [url])
     }
