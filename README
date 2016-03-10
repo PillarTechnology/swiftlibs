@@ -24,7 +24,7 @@ Build:
     Production (App Store):
         1. Select the "SwiftLibsFrameworkProduction" project from the target-menu.
         2. Select any the generic simulator from the build-target. (i.e. "Generic iOS Device")
-        3. Copy the built framework from bin/development into your project's directory.
+        3. Copy the built framework from bin/production into your project's directory.
         4. Add the framework as an embedded-binary into your application.
 
 
