@@ -208,7 +208,7 @@ public class WebRequest : NSObject {
     internal var _cookies : Dictionary<String, String> = Dictionary<String, String>()
     internal var _sessionDelegate : _SessionDelegate = _SessionDelegate.newInstance()
     internal var _multiparts : Array<MultiPart> = Array<MultiPart>()
-
+    internal var _rawBody: NSData!
 
     internal static func _doesDataContainData(needle needle: NSData, haystack: NSData) -> Bool {
         return (haystack.rangeOfData(needle, options: NSDataSearchOptions.Backwards, range: NSMakeRange(0, haystack.length)).location != NSNotFound)
@@ -234,10 +234,18 @@ public class WebRequest : NSObject {
 
     public func setFollowRedirects(followRedirects : Bool) { _sessionDelegate.setFollowRedirects(followRedirects) }
 
+    public func setBody(body: String) {
+        _multiparts.removeAll()
+        _postParams.removeAll()
+
+        _rawBody = body.dataUsingEncoding(NSUTF8StringEncoding)!
+    }
+
     public func setGetParam(key key : String, value : String) { _getParams[key] = value }
 
     public func setPostParam(key key : String, value : String) {
         _multiparts.removeAll()
+        _rawBody = nil
 
         _postParams[key] = value
     }
@@ -260,6 +268,7 @@ public class WebRequest : NSObject {
 
     public func addMultiPart(multiPart : MultiPart) {
         _postParams.removeAll()
+        _rawBody = nil
 
         if (multiPart.isValid()) {
             _multiparts.append(multiPart)
@@ -420,11 +429,12 @@ public class WebRequest : NSObject {
             }
         }
 
-        // Post Body
-        if (postBody != nil) {
+        // Create Body
+        if (_rawBody != nil) {
+            request.HTTPBody = _rawBody!
+        } else if (postBody != nil) {
             request.HTTPBody = postBody!.dataUsingEncoding(NSUTF8StringEncoding)
-        }
-        else if (multiPartBody != nil) {
+        } else if (multiPartBody != nil) {
             request.HTTPBody = multiPartBody!
         }
 
