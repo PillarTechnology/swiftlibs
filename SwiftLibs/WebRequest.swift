@@ -234,13 +234,6 @@ public class WebRequest : NSObject {
 
     public func setFollowRedirects(followRedirects : Bool) { _sessionDelegate.setFollowRedirects(followRedirects) }
 
-    public func setBody(body: String) {
-        _multiparts.removeAll()
-        _postParams.removeAll()
-
-        _rawBody = body.dataUsingEncoding(NSUTF8StringEncoding)!
-    }
-
     public func setGetParam(key key : String, value : String) { _getParams[key] = value }
 
     public func setPostParam(key key : String, value : String) {
@@ -278,6 +271,13 @@ public class WebRequest : NSObject {
         }
     }
 
+    public func setBody(body: String) {
+        _multiparts.removeAll()
+        _postParams.removeAll()
+
+        _rawBody = body.dataUsingEncoding(NSUTF8StringEncoding)!
+    }
+    
     internal func _generatePostBody() -> String {
         var postBody : String = ""
         for key : String in _postParams.keys {

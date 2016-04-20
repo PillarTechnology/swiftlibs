@@ -70,6 +70,10 @@ public class MockWebRequest : WebRequest {
         self.mocker.recordInvocation("addMultiPart", paramList: [multiPart])
     }
 
+    public override func setBody(body: String) {
+        self.mocker.recordInvocation("setBody", paramList: [body])
+    }
+
     public class _executeResponse {
         public var request : WebRequest!
         public var response : Response!
