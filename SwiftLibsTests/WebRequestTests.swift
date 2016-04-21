@@ -120,7 +120,7 @@ class WebRequestTests: XCTestCase {
         _subject.addMultiPart(WebRequest.MultiPart(contentDisposition: .INLINE, name: "multipart"))
 
         // Assert
-        XCTAssertNil(_subject._rawBody, "Adding a multipart objec must clear out the raw body.")
+        XCTAssertNil(_subject._rawBody, "Adding a multipart object must clear out the raw body.")
     }
 
     func testSetBodyClearsMultiParts() {
