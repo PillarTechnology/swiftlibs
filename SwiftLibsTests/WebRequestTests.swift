@@ -473,4 +473,25 @@ class WebRequestTests: XCTestCase {
         XCTAssertEqual(actualBody, expectedBodyData)
     }
 
+    func testSetUrlDoesNotEscapeCharactersRequiredInRootOfUrl() {
+        // Setup
+        let expectedUrl = "https://www.potter.com:1234/index.badphp"
+
+        // Action
+        _subject.setUrl(expectedUrl)
+
+        // Assert
+        XCTAssertEqual(_subject._url, expectedUrl)
+    }
+
+    func testSetUrlEscapesSpacesInRootOfUrl() {
+        // Setup
+        let expectedUrl = "spaced%20out"
+
+        // Action
+        _subject.setUrl("spaced out")
+
+        // Assert
+        XCTAssertEqual(_subject._url, expectedUrl)
+    }
 }

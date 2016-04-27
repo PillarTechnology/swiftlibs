@@ -226,7 +226,11 @@ public class WebRequest : NSObject {
         }
     }
 
-    public func setUrl(url : String) { _url = url }
+    public func setUrl(url : String) {
+        let allowedCharacters = NSMutableCharacterSet.URLHostAllowedCharacterSet().mutableCopy()
+        allowedCharacters.formUnionWithCharacterSet(NSCharacterSet.URLPathAllowedCharacterSet())
+        _url = url.stringByAddingPercentEncodingWithAllowedCharacters(allowedCharacters as! NSCharacterSet)
+    }
 
     public func setMethod(method : HttpMethod) { _method = method }
 
