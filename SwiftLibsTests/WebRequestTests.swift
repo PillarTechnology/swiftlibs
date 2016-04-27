@@ -90,6 +90,17 @@ class WebRequestTests: XCTestCase {
         XCTAssertEqual(_subject._multiparts.count, 0, "Setting a post param must clear out multiparts.")
     }
 
+    func testSetPostParamClearsRawBody() {
+        // Setup
+        _subject._rawBody = "This is data I do not wish to see anymore!".dataUsingEncoding(NSUTF8StringEncoding)
+
+        // Action
+        _subject.setPostParam(key: "key", value: "value")
+
+        // Assert
+        XCTAssertNil(_subject._rawBody, "Setting a post param must clear out the raw body.")
+    }
+
     func testAddMultipartClearsPostParams() {
         // Setup
         _subject._postParams["key"] = "value"
@@ -99,6 +110,39 @@ class WebRequestTests: XCTestCase {
 
         // Assert
         XCTAssertEqual(_subject._postParams.count, 0, "Adding a multipart object must clear out post params.")
+    }
+
+    func testAddMultipartClearsRawBody() {
+        // Setup
+        _subject._rawBody = "This is data I do not wish to see anymore!".dataUsingEncoding(NSUTF8StringEncoding)
+
+        // Action
+        _subject.addMultiPart(WebRequest.MultiPart(contentDisposition: .INLINE, name: "multipart"))
+
+        // Assert
+        XCTAssertNil(_subject._rawBody, "Adding a multipart object must clear out the raw body.")
+    }
+
+    func testSetBodyClearsMultiParts() {
+        // Setup
+        _subject._multiparts.append(WebRequest.MultiPart(contentDisposition: .INLINE, name: "multipart"))
+
+        // Action
+        _subject.setBody("This is a value that I am setting")
+
+        // Assert
+        XCTAssertEqual(_subject._multiparts.count, 0, "Setting the body directly must clear out multiparts.")
+    }
+
+    func testSetBodyClearsPostParams() {
+        // Setup
+        _subject._postParams["key"] = "value"
+
+        // Action
+        _subject.setBody("This is a value that I am setting")
+
+        // Assert
+        XCTAssertEqual(_subject._postParams.count, 0, "Setting the body directly must clear out post params.")
     }
 
     func testAddInvalidMultipartDoesNotAppendMultiPart() {
@@ -414,6 +458,19 @@ class WebRequestTests: XCTestCase {
 
         // Assert
         XCTAssertEqual(header, expectedHeader)
+    }
+
+    func testSetBodyStoresTheDataToBeSent() {
+        // Setup
+        let expectedBodyText : String = "This is very important data - whatever you do, don't lose..."
+        let expectedBodyData : NSData = expectedBodyText.dataUsingEncoding(NSUTF8StringEncoding)!
+        _subject.setBody(expectedBodyText)
+
+        // Action
+        let actualBody = _subject._rawBody
+
+        // Assert
+        XCTAssertEqual(actualBody, expectedBodyData)
     }
 
     func testSetUrlDoesNotEscapeCharactersRequiredInRootOfUrl() {
