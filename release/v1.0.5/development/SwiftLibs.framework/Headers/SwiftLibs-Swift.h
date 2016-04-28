@@ -104,6 +104,7 @@ SWIFT_CLASS("_TtC9SwiftLibs10WebRequest")
 - (void)setPostParamWithKey:(NSString * __nonnull)key value:(NSString * __nonnull)value;
 - (void)addCookieWithKey:(NSString * __nonnull)key value:(NSString * __nullable)value;
 - (void)addCookie:(NSString * __nonnull)keyValuePair;
+- (void)setBody:(NSString * __nonnull)body;
 - (void)execute:(void (^ __nullable)(WebRequest * __nonnull, Response * __nonnull))callback;
 @end
 
@@ -122,6 +123,7 @@ SWIFT_CLASS("_TtC9SwiftLibs14MockWebRequest")
 - (void)setFollowRedirects:(BOOL)followRedirects;
 - (void)addCookieWithKey:(NSString * __nonnull)key value:(NSString * __nullable)value;
 - (void)addCookie:(NSString * __nonnull)keyValuePair;
+- (void)setBody:(NSString * __nonnull)body;
 - (void)execute:(void (^ __nullable)(WebRequest * __nonnull, Response * __nonnull))callback;
 @end
 
