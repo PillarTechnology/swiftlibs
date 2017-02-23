@@ -1,76 +1,82 @@
-
-import Foundation
 import UIKit
-
-public protocol iMocker {
-    typealias MethodName_t = String
-    typealias ParamList_t = Array<Any>
-    typealias ReturnType_t = Any
-    func setReturnValueFor(methodName : MethodName_t, returnValue : ReturnType_t?, n : Int)
-    func getReturnValueFor(methodName : MethodName_t) -> ReturnType_t?
-    func getParametersFor(methodName : MethodName_t, n : Int) -> ParamList_t?
-    func getInvocationCountFor(methodName : MethodName_t) -> Int
-    func recordInvocation(methodName : MethodName_t, paramList : ParamList_t?)
+protocol iMocker {
+    associatedtype MethodName_t = String
+    associatedtype ParamList_t = Array<Any>
+    associatedtype ReturnType_t = Any
+    func setReturnValueFor(_ methodName : MethodName_t, returnValue : ReturnType_t?, n : Int)
+    func getReturnValueFor(_ methodName : MethodName_t) -> ReturnType_t?
+    func getParametersFor(_ methodName : MethodName_t, n : Int) -> ParamList_t?
+    func getInvocationCountFor(_ methodName : MethodName_t) -> Int
+    func recordInvocation(_ methodName : MethodName_t, paramList : ParamList_t?)
     func reset()
 }
 
-public class Mocker : NSObject, iMocker {
+private extension Array {
+    func get(at i: Index) -> Element? {
+        var count = 0
+        for item in self {
+            if count == i {
+                return item
+            }
+            count += 1
+        }
+        return nil
+    }
+}
+open class Mocker : NSObject, iMocker {
     public typealias MethodName_t = String
     public typealias ParamList_t = Array<Any>
     public typealias ReturnType_t = Any
 
-    private var _invocationParameterArray = Dictionary<MethodName_t, Array<ParamList_t?>>()
-    private var _definedReturnValues = Dictionary<MethodName_t, Array<ReturnType_t?>>()
-    private var _definedReturnValueRequestCount = Dictionary<MethodName_t, Int>()
-
-    // NOTE:
-    //  If unspecified (or negative), n will append the returnValue to the queue of returnValues
-    //  If specified, n will override the already-specified returnValue
-    public func setReturnValueFor(methodName : MethodName_t, returnValue : ReturnType_t?, n : Int = -1) {
-        if (_definedReturnValues[methodName] == nil) {
-            _definedReturnValues[methodName] = Array<ReturnType_t?>()
-            _definedReturnValueRequestCount[methodName] = 0
+    var invocationParameterArray = Dictionary<MethodName_t, Array<ParamList_t?>>()
+    var definedReturnValues = Dictionary<MethodName_t, Array<ReturnType_t?>>()
+    var definedReturnValueRequestCount = Dictionary<MethodName_t, Int>()
+    // If unspecified (or negative), n will append the returnValue to the queue of returnValues
+    // If specified, n will override the already-specified returnValue
+    open func setReturnValueFor(_ methodName : MethodName_t, returnValue : ReturnType_t?, n : Int = -1) {
+        if (definedReturnValues[methodName] == nil) {
+            definedReturnValues[methodName] = Array<ReturnType_t?>()
+            definedReturnValueRequestCount[methodName] = 0
         }
         if (n < 0) {
-            _definedReturnValues[methodName]!.append(returnValue)
+            definedReturnValues[methodName]!.append(returnValue)
         }
         else {
-            _definedReturnValues[methodName]![n] = returnValue
+            definedReturnValues[methodName]![n] = returnValue
         }
     }
-
-    public func getReturnValueFor(methodName : MethodName_t) -> ReturnType_t? {
-        let requestCount : Int = _definedReturnValueRequestCount[methodName]!
-        let availableReturnValueCount : Int = _definedReturnValues[methodName]!.count
-        assert(requestCount < availableReturnValueCount, "Could not return \(requestCount)th value for \(methodName). Only \(availableReturnValueCount) values set.")
-        _definedReturnValueRequestCount[methodName]! += 1
-        return _definedReturnValues[methodName]![requestCount]
-    }
-
-    public func getParametersFor(methodName : MethodName_t, n : Int = 0) -> ParamList_t? {
-        let parametersForAllInvocations : Array<ParamList_t?>? = _invocationParameterArray[methodName]
-
-        if (n < parametersForAllInvocations?.count) {
-            return parametersForAllInvocations?[n]
+    open func getReturnValueFor(_ methodName : MethodName_t) -> ReturnType_t? {
+        guard let requestCount = definedReturnValueRequestCount[methodName],
+            let returnValues = definedReturnValues[methodName] else {
+            return nil
         }
-        return nil
+        definedReturnValueRequestCount[methodName] = requestCount + 1
+        assert(returnValues.count > 0, "Could not return \(requestCount)th value for \(methodName); no return values were set.")
+        if requestCount < returnValues.count {
+            return returnValues[requestCount]
+        }
+        else {
+            return returnValues[returnValues.count - 1]
+        }
     }
-
-    public func getInvocationCountFor(methodName : MethodName_t) -> Int {
-        let parametersForAllInvocations : Array<ParamList_t?>? = _invocationParameterArray[methodName]
+    open func getParametersFor(_ methodName : MethodName_t, n : Int = 0) -> ParamList_t? {
+        guard let methodName = invocationParameterArray[methodName] else { return nil }
+        let parametersForAllInvocations : Array<ParamList_t?> = methodName
+        return parametersForAllInvocations.get(at: n) ?? nil
+    }
+    open func getInvocationCountFor(_ methodName : MethodName_t) -> Int {
+        let parametersForAllInvocations : Array<ParamList_t?>? = invocationParameterArray[methodName]
         return ( (parametersForAllInvocations == nil) ? 0 : parametersForAllInvocations!.count )
     }
-
-    public func recordInvocation(methodName : MethodName_t, paramList : ParamList_t?) {
-        if (_invocationParameterArray[methodName] == nil) {
-            _invocationParameterArray[methodName] = Array<ParamList_t?>()
+    open func recordInvocation(_ methodName : MethodName_t, paramList : ParamList_t? = []) {
+        if (invocationParameterArray[methodName] == nil) {
+            invocationParameterArray[methodName] = Array<ParamList_t?>()
         }
-        _invocationParameterArray[methodName]!.append(paramList)
+        invocationParameterArray[methodName]!.append(paramList)
     }
-
-    public func reset() {
-        _invocationParameterArray.removeAll(keepCapacity: false)
-        _definedReturnValues.removeAll(keepCapacity: false)
-        _definedReturnValueRequestCount.removeAll(keepCapacity: false)
+    open func reset() {
+        invocationParameterArray.removeAll(keepingCapacity: false)
+        definedReturnValues.removeAll(keepingCapacity: false)
+        definedReturnValueRequestCount.removeAll(keepingCapacity: false)
     }
 }
