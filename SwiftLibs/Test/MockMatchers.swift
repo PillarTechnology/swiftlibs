@@ -20,11 +20,11 @@ public func invoke<T: Mockable>(_ name: String, times: Int = 1) -> MatcherFunc<T
 public func invoke<T: Mockable, E: Equatable>(_ name: String, atInvocation invocationIndex: Int = 0, withParameter parameter: E?, at parameterIndex: Int = 0) -> MatcherFunc<T> {
     return MatcherFunc { actualExpression, failureMessage in
 
-        failureMessage.postfixMessage = "invoke \(name) with \(parameter) at index \(parameterIndex) on invocation \(invocationIndex)"
+        failureMessage.postfixMessage = "invoke \(name) with \(String(describing: parameter)) at index \(parameterIndex) on invocation \(invocationIndex)"
 
         if let mockable = try actualExpression.evaluate() {
-            let actualParameter: E? = mockable.parameter(for: name, at: parameterIndex, andInvocation: invocationIndex)
-            failureMessage.actualValue = "\(actualParameter)"
+            let actualParameter: E? = mockable.parameter(for: name, atInvocationIndex: invocationIndex, atParameterIndex: parameterIndex)
+            failureMessage.actualValue = "\(String(describing: actualParameter))"
             return actualParameter == parameter
         }
 
@@ -36,11 +36,11 @@ public func invoke<T: Mockable, E: Equatable>(_ name: String, atInvocation invoc
 public func invoke<T: Mockable, E: AnyObject>(_ name: String, atInvocation invocationIndex: Int = 0, withIdenticalParameter parameter: E?, at parameterIndex: Int = 0) -> MatcherFunc<T> {
     return MatcherFunc { actualExpression, failureMessage in
 
-        failureMessage.postfixMessage = "invoke \(name) with \(parameter) at index \(parameterIndex) on invocation \(invocationIndex)"
+        failureMessage.postfixMessage = "invoke \(name) with \(String(describing: parameter)) at index \(parameterIndex) on invocation \(invocationIndex)"
 
         if let mockable = try actualExpression.evaluate() {
-            let actualParameter: E? = mockable.parameter(for: name, at: parameterIndex, andInvocation: invocationIndex)
-            failureMessage.actualValue = "\(actualParameter)"
+            let actualParameter: E? = mockable.parameter(for: name, atInvocationIndex: invocationIndex, atParameterIndex: parameterIndex)
+            failureMessage.actualValue = "\(String(describing: actualParameter))"
             return actualParameter === parameter
         }
 
@@ -55,8 +55,8 @@ public func invoke<T: Mockable, U>(_ name: String, atInvocation invocationIndex:
         failureMessage.postfixMessage = "invoke \(name) with matching parameter at index \(parameterIndex) on invocation \(invocationIndex)"
 
         if let mockable = try actualExpression.evaluate() {
-            let actualValue: U? = mockable.parameter(for: name, at: parameterIndex, andInvocation: invocationIndex)
-            failureMessage.actualValue = "parameter as \(actualValue)"
+            let actualValue: U? = mockable.parameter(for: name, atInvocationIndex: invocationIndex, atParameterIndex: parameterIndex)
+            failureMessage.actualValue = "parameter as \(String(describing: actualValue))"
             return matcher( actualValue ) ?? false
         }
 
